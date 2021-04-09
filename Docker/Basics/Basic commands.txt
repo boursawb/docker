@@ -1,0 +1,77 @@
+Basic commands
+
+start the docker service
+> sudo systemctl start docker
+
+check if docker is running
+> sudo docker info
+
+add docker group if it doesn't exist
+> sudo groupadd docker
+
+add your user to the docker group
+> sudo gpasswd -a $USER docker
+
+login again to update groups
+> newgrp docker
+
+show docker info without sudo to confirm access
+> docker info
+
+docker commands are always in this form
+> docker command-name [options] 
+
+use of management group commands are always in this form
+> docker management-group command-name [options]
+
+see list of commands / help
+> docker --help
+
+see commands within a specific group
+> docker system --help
+
+see commands specific to images
+> docker image --help
+
+run the initial hello-world container
+> docker run hello-world
+
+show running containers
+> docker ps
+
+show all containers, running or not
+> docker ps -a
+
+stop a container
+> docker stop <ContainerName>
+
+to see a containers logs
+> docker logs <ContainerName>
+
+to start a container
+> docker start <ContainerName>
+
+to run a command inside a container
+> docker exec <Command> : such as ls or cat /etc/nginx/nginx.conf 
+
+to search for images you don't know the exact name of
+> docker search "Some Name Here"
+
+to build from a Dockerfile
+> docker build ...
+
+to see how much space is being used by docker
+> docker system df
+
+to see the images
+> docker images
+
+to see size info via the ps option
+> docker ps -a -s
+
+to remove a container
+> docker rm <ContainerName>
+
+to clean up containers
+> docker system prune [Options]
+
