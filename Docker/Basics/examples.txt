@@ -1,0 +1,39 @@
+## 1
+Run nginx detached on specific port
+------------------------------------
+run a new container
+named web-server
+run it detached
+map container port 80 to host port 8080
+grab nginx tag 1.12
+ 
+Command
+docker run --name web-server -d -p 8080:80 nginx:1.12
+
+## 2
+Example basic Dockerfile
+-------------------------------------------
+# Python v3 base layer
+FROM python:3
+
+# Set the working directory in the image's file system
+WORKDIR /usr/src/app
+
+# Copy everything in the host working directory to the container's directory
+COPY . .
+
+# Install code dependencies in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Indicate that the server will be listening on port 5000
+EXPOSE 5000
+
+# Set the default command to run the app
+CMD [ "python", "./src/app.py" ]
+
+Explanation:
+FROM sets the base layer image
+COPY . . copies all of the files in the code repository into the container's /usr/src/app directory
+RUN executes a command in a new layer at the top of the image
+EXPOSE only indicates what port the container will be listening on, it doesn't automatically open the port on the container
+CMD sets the default command to run when a container is made from the image
